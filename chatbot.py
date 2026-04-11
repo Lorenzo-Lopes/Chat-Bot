@@ -1,22 +1,14 @@
 import os
 from dotenv import load_dotenv
 import google.genai as genai
-
 load_dotenv()
 MINHA_CHAVE_API = os.getenv("GEMINI_API_KEY")
-
-
-# Inicializa o cliente da nova biblioteca
 client = genai.Client(api_key=MINHA_CHAVE_API)
-
-# Inicia o chat usando o modelo mais recente
 chat = client.chats.create(model='gemini-flash-latest')
 
 print("Chatbot iniciado! Digite 'sair' para encerrar.")
 print("-*-"*15)
-
 prompt = input("Você: ")
-
 while prompt.lower() != "sair":
     # Envia a mensagem
     resposta = chat.send_message(prompt)
